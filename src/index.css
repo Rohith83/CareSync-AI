@@ -88,6 +88,165 @@
   }
 }
 
+/* Landing page — premium healthcare hero (scoped, landing-only classes) */
+@layer utilities {
+  .cs-hero-bg {
+    background: linear-gradient(180deg, #F0FAF8 0%, #F8FAFC 55%, var(--color-bg) 100%);
+  }
+  .dark .cs-hero-bg {
+    background: linear-gradient(180deg, #0B1F2A 0%, var(--color-bg) 55%, var(--color-bg) 100%);
+  }
+
+  .cs-hero-glow {
+    background: radial-gradient(circle, rgba(20,184,166,0.10) 0%, rgba(30,64,175,0.05) 45%, transparent 70%);
+  }
+
+  .cs-pill {
+    background-color: var(--color-mint);
+    color: #0F766E;
+    border: 1px solid rgba(20,184,166,0.25);
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+  .dark .cs-pill {
+    background-color: rgba(20,184,166,0.12);
+    color: #5EEAD4;
+    border-color: rgba(20,184,166,0.25);
+  }
+
+  .cs-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #1E40AF 0%, #14B8A6 100%);
+    box-shadow: 0 10px 25px -8px rgba(20,184,166,0.4);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .cs-btn-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+
+  .cs-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    background-color: var(--color-card);
+    border: 1px solid #E2E8F0;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  .dark .cs-btn-secondary { border-color: rgba(255,255,255,0.1); }
+  .cs-btn-secondary:hover { background-color: #F8FAFC; transform: translateY(-1px); }
+  .dark .cs-btn-secondary:hover { background-color: #243043; }
+
+  .cs-panel {
+    background-color: var(--color-card);
+    border: 1px solid rgba(20,184,166,0.12);
+    border-radius: 28px;
+    padding: 1.75rem;
+    box-shadow: 0 20px 60px -20px rgba(15,23,42,0.12);
+  }
+
+  .cs-panel-card {
+    background-color: var(--color-bg);
+    border-radius: 20px;
+    padding: 1.25rem;
+    border: 1px solid rgba(148,163,184,0.12);
+  }
+
+  .cs-icon-circle {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cs-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-card);
+    border: 1px solid rgba(148,163,184,0.2);
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+  }
+
+  .cs-chip {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background-color: var(--color-mint);
+    color: #0F766E;
+  }
+  .dark .cs-chip { background-color: rgba(20,184,166,0.14); color: #5EEAD4; }
+
+  .cs-mini-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    background-color: var(--color-card);
+    border-radius: 10px;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .cs-step-card {
+    position: relative;
+    background-color: var(--color-card);
+    border-radius: 20px;
+    padding: 1.75rem 1.5rem;
+    border: 1px solid rgba(148,163,184,0.12);
+  }
+
+  .cs-step-number {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: rgba(148,163,184,0.25);
+  }
+
+  .cs-feature-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background-color: var(--color-bg);
+    border-radius: 18px;
+    padding: 1.5rem;
+  }
+
+  .cs-family-panel {
+    background-color: var(--color-card);
+    border-radius: 28px;
+    padding: 2.5rem;
+    border: 1px solid rgba(148,163,184,0.12);
+  }
+
+  .cs-family-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    background-color: var(--color-bg);
+    border-radius: 16px;
+    padding: 0.875rem 1rem;
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }

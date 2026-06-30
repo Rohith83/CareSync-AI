@@ -3,18 +3,11 @@ import { Link } from "react-router-dom";
 import {
   RiHeartPulseLine, RiRobot2Line, RiShieldCheckLine, RiTimeLine,
   RiUserHeartLine, RiArrowRightLine, RiStarFill, RiVerifiedBadgeFill,
-  RiFlashlightLine, RiFileTextLine, RiTeamLine
+  RiFlashlightLine, RiTeamLine, RiSearchLine, RiCalendarCheckLine,
+  RiFileShield2Line, RiStethoscopeLine, RiMentalHealthLine,
+  RiThermometerLine, RiCapsuleLine, RiPulseLine
 } from "react-icons/ri";
 import { PageTransition } from "../components/ui/index";
-
-const features = [
-  { icon: RiRobot2Line, title: "AI Doctor Match", desc: "Answer 6 smart questions. Get matched with the right specialist in seconds.", color: "#7C3AED", bg: "#7C3AED10" },
-  { icon: RiHeartPulseLine, title: "Smart Symptom Checker", desc: "Select symptoms, get department suggestions, and find the best doctor for you.", color: "#EF4444", bg: "#EF444410" },
-  { icon: RiTimeLine, title: "Health Timeline", desc: "Your complete medical journey — appointments, reports, prescriptions, all in one view.", color: "#14B8A6", bg: "#14B8A610" },
-  { icon: RiShieldCheckLine, title: "Digital Health Vault", desc: "Secure storage for all your medical records, insurance cards, and lab reports.", color: "#1E40AF", bg: "#1E40AF10" },
-  { icon: RiTeamLine, title: "Family Health Profiles", desc: "Manage health for your entire family — parents, grandparents, siblings, all together.", color: "#F59E0B", bg: "#F59E0B10" },
-  { icon: RiFlashlightLine, title: "Emergency Mode", desc: "One tap to nearest hospitals, ambulance, and your emergency contacts.", color: "#EF4444", bg: "#EF444410" },
-];
 
 const stats = [
   { value: "2.4M+", label: "Patients Served" },
@@ -23,181 +16,177 @@ const stats = [
   { value: "< 3 min", label: "Avg. Booking Time" },
 ];
 
+const steps = [
+  { icon: RiSearchLine, step: "01", title: "Tell us what's wrong", desc: "Describe your symptoms in plain language or pick from a simple checklist." },
+  { icon: RiRobot2Line, step: "02", title: "AI finds your match", desc: "Our engine compares your case against specialties, ratings, and availability." },
+  { icon: RiCalendarCheckLine, step: "03", title: "Book in seconds", desc: "Confirm a time slot with your matched doctor — no back-and-forth calls." },
+  { icon: RiFileShield2Line, step: "04", title: "Care stays with you", desc: "Every visit, prescription, and report syncs into your personal health vault." },
+];
+
+const features = [
+  { icon: RiRobot2Line, title: "AI Doctor Match", desc: "Answer a few smart questions and get matched with the right specialist in seconds." },
+  { icon: RiHeartPulseLine, title: "Smart Symptom Checker", desc: "Select symptoms, get department suggestions, and find the best doctor for you." },
+  { icon: RiTimeLine, title: "Health Timeline", desc: "Your complete medical journey — appointments, reports, prescriptions, all in one view." },
+  { icon: RiShieldCheckLine, title: "Digital Health Vault", desc: "Secure storage for all your medical records, insurance cards, and lab reports." },
+  { icon: RiTeamLine, title: "Family Health Profiles", desc: "Manage health for your entire family — parents, grandparents, siblings, all together." },
+  { icon: RiFlashlightLine, title: "Emergency Mode", desc: "One tap to nearest hospitals, ambulance, and your emergency contacts." },
+];
+
+const familyMembers = [
+  { name: "You", role: "Primary", icon: RiPulseLine, color: "#1E40AF" },
+  { name: "Parents", role: "2 profiles", icon: RiHeartPulseLine, color: "#14B8A6" },
+  { name: "Children", role: "1 profile", icon: RiMentalHealthLine, color: "#7C3AED" },
+];
+
 const testimonials = [
   { name: "Priya S.", city: "Chennai", rating: 5, text: "CareSync AI matched me with the perfect cardiologist in under a minute. The AI Doctor Match is genuinely impressive!", avatar: "https://randomuser.me/api/portraits/women/44.jpg" },
   { name: "Arjun K.", city: "Bangalore", rating: 5, text: "Managing my parents' health records was a nightmare before CareSync. Now everything is in one place.", avatar: "https://randomuser.me/api/portraits/men/32.jpg" },
   { name: "Meena R.", city: "Coimbatore", rating: 5, text: "The symptom checker helped me figure out I needed an endocrinologist, not a GP. Saved so much time!", avatar: "https://randomuser.me/api/portraits/women/22.jpg" },
 ];
 
+const symptomChips = ["Headache", "Fever", "Chest pain", "Fatigue", "Skin rash"];
+
 export default function Landing() {
   return (
     <PageTransition>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-app dark:bg-gray-950 min-h-screen flex items-center">
-        {/* Background decoration */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full opacity-[0.04] bg-medical-blue" />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full opacity-[0.06] bg-teal" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-[0.02]" style={{ background: "radial-gradient(circle, #7C3AED, transparent)" }} />
+      <section className="relative overflow-hidden cs-hero-bg">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full cs-hero-glow" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 py-20 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-full px-4 py-1.5 text-sm font-semibold text-purple-ai mb-6"
-              >
-                <RiRobot2Line />
-                India's First AI-Powered Patient Care Platform
-              </motion.div>
+        <div className="relative max-w-4xl mx-auto px-4 pt-24 pb-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 cs-pill mb-7"
+          >
+            <RiStethoscopeLine />
+            India's First AI-Powered Patient Care Platform
+          </motion.div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-app-dark dark:text-white leading-tight mb-6"
-              >
-                Your health,
-                <br />
-                <span className="bg-gradient-to-r from-medical-blue to-teal bg-clip-text">
-                Intelligently connected.
-                </span>
-              </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-app-dark dark:text-white leading-[1.1] mb-6"
+          >
+            Calm, considered care
+            <br />
+            for your whole family.
+          </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg text-muted leading-relaxed mb-8 max-w-lg"
-              >
-                CareSync AI goes beyond appointment booking. Smart symptom checking, AI doctor matching, care plan tracking, and a complete health vault — for you and your entire family.
-              </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.16 }}
+            className="text-lg text-muted leading-relaxed mb-9 max-w-xl mx-auto"
+          >
+            CareSync AI listens to your symptoms, finds the right specialist, and keeps every
+            record safe — so healthcare feels less like a system and more like support.
+          </motion.p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-col sm:flex-row gap-3"
-              >
-                <Link
-                  to="/signup"
-                  className="flex items-center justify-center gap-2 px-8 py-4 gradient-blue-teal text-white font-bold rounded-2xl hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/25"
-                >
-                  Start Free Today
-                  <RiArrowRightLine />
-                </Link>
-                <Link
-                  to="/doctors"
-                  className="flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-app-dark dark:text-white font-bold rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                >
-                  <RiUserHeartLine className="text-teal" />
-                  Find a Doctor
-                </Link>
-              </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.24 }}
+            className="flex flex-col sm:flex-row gap-3 justify-center mb-10"
+          >
+            <Link to="/signup" className="cs-btn-primary">
+              Start Free Today
+              <RiArrowRightLine />
+            </Link>
+            <Link to="/doctors" className="cs-btn-secondary">
+              <RiUserHeartLine />
+              Find a Doctor
+            </Link>
+          </motion.div>
 
-              {/* Trust Badges */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-wrap items-center gap-4 mt-8"
-              >
-                <div className="flex items-center gap-1.5 text-sm text-muted">
-                  <RiVerifiedBadgeFill className="text-teal" />
-                  50,000+ Verified Doctors
-                </div>
-                <div className="flex items-center gap-1.5 text-sm text-muted">
-                  <RiShieldCheckLine className="text-medical-blue" />
-                  ABDM Compliant
-                </div>
-                <div className="flex items-center gap-1.5 text-sm text-muted">
-                  <RiStarFill className="text-warning" />
-                  4.9 App Rating
-                </div>
-              </motion.div>
-            </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted"
+          >
+            <span className="inline-flex items-center gap-1.5"><RiVerifiedBadgeFill className="text-teal" /> 50,000+ Verified Doctors</span>
+            <span className="inline-flex items-center gap-1.5"><RiShieldCheckLine className="text-medical-blue" /> ABDM Compliant</span>
+            <span className="inline-flex items-center gap-1.5"><RiStarFill className="text-warning" /> 4.9 App Rating</span>
+          </motion.div>
+        </div>
 
-            {/* Right — Dashboard Preview Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative hidden lg:block"
-            >
-              <div className="card p-6 shadow-2xl">
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <p className="text-xs text-muted font-medium">Good morning,</p>
-                    <h3 className="font-bold text-app-dark dark:text-white">Rohith 👋</h3>
+        <div className="relative max-w-5xl mx-auto px-4 pb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="cs-panel"
+          >
+            <div className="grid md:grid-cols-3 gap-5">
+              <div className="cs-panel-card">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="cs-icon-circle" style={{ background: "#7C3AED14" }}>
+                    <RiRobot2Line style={{ color: "#7C3AED" }} />
                   </div>
-                  <div className="flex items-center gap-2 bg-green-50 dark:bg-green-900/20 px-3 py-1.5 rounded-xl">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                    <span className="text-xs font-semibold text-green-600 dark:text-green-400">Health Score: 78</span>
-                  </div>
+                  <p className="text-sm font-bold text-app-dark dark:text-white">Tell CareSync what's wrong</p>
                 </div>
-
-                {/* Fake vitals */}
-                <div className="grid grid-cols-3 gap-3 mb-5">
-                  {[
-                    { label: "Blood Pressure", value: "120/76", unit: "mmHg", icon: "❤️", color: "#EF4444" },
-                    { label: "Heart Rate", value: "71", unit: "bpm", icon: "💓", color: "#7C3AED" },
-                    { label: "Sleep", value: "7.2", unit: "hrs", icon: "🌙", color: "#1E40AF" },
-                  ].map(v => (
-                    <div key={v.label} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-3 text-center">
-                      <div className="text-xl mb-1">{v.icon}</div>
-                      <p className="text-base font-bold text-app-dark dark:text-white">{v.value}</p>
-                      <p className="text-[10px] text-muted">{v.unit}</p>
-                    </div>
+                <div className="cs-search-bar mb-3">
+                  <RiSearchLine className="text-muted text-sm" />
+                  <span className="text-sm text-muted">I've had a fever since...</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {symptomChips.map(s => (
+                    <span key={s} className="cs-chip">{s}</span>
                   ))}
                 </div>
+              </div>
 
-                {/* Next appointment */}
-                <div className="flex items-center gap-3 bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-3 mb-4">
-                  <img src="https://randomuser.me/api/portraits/men/32.jpg" className="w-10 h-10 rounded-xl object-cover" />
-                  <div className="flex-1">
-                    <p className="text-xs font-semibold text-app-dark dark:text-white">Dr. Arjun Mehta</p>
-                    <p className="text-[10px] text-muted">Cardiology · Today 3:00 PM</p>
+              <div className="cs-panel-card">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="cs-icon-circle" style={{ background: "#14B8A614" }}>
+                    <RiHeartPulseLine style={{ color: "#14B8A6" }} />
                   </div>
-                  <span className="text-[10px] font-bold text-teal bg-teal/10 px-2 py-1 rounded-lg">Upcoming</span>
+                  <p className="text-sm font-bold text-app-dark dark:text-white">Matched specialist</p>
                 </div>
-
-                {/* AI suggestion */}
-                <div className="flex items-center gap-3 bg-purple-50 dark:bg-purple-900/20 rounded-2xl p-3">
-                  <div className="w-8 h-8 rounded-xl gradient-purple-blue flex items-center justify-center flex-shrink-0">
-                    <RiRobot2Line className="text-white text-sm" />
-                  </div>
+                <div className="flex items-center gap-3 mb-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/52.jpg"
+                    className="w-11 h-11 rounded-full object-cover"
+                    onError={e => { e.target.style.display = "none"; }}
+                  />
                   <div>
-                    <p className="text-xs font-semibold text-purple-ai">AI Insight</p>
-                    <p className="text-[10px] text-muted">BP improved 12% this month. Keep up the routine!</p>
+                    <p className="text-sm font-semibold text-app-dark dark:text-white">Dr. Arjun Mehta</p>
+                    <p className="text-xs text-muted">Cardiology · 98% match</p>
                   </div>
+                </div>
+                <div className="cs-mini-row">
+                  <RiCalendarCheckLine className="text-teal text-sm" />
+                  <span>Today, 3:00 PM</span>
                 </div>
               </div>
 
-              {/* Floating badges */}
-              <div className="absolute -top-4 -right-4 bg-white dark:bg-gray-800 shadow-xl rounded-2xl px-3 py-2 flex items-center gap-2">
-                <div className="w-7 h-7 bg-teal/10 rounded-lg flex items-center justify-center">🤖</div>
-                <div>
-                  <p className="text-[10px] font-semibold text-app-dark dark:text-white">AI Match</p>
-                  <p className="text-[10px] text-muted">Doctor found!</p>
+              <div className="cs-panel-card">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="cs-icon-circle" style={{ background: "#1E40AF14" }}>
+                    <RiFileShield2Line style={{ color: "#1E40AF" }} />
+                  </div>
+                  <p className="text-sm font-bold text-app-dark dark:text-white">Health vault</p>
+                </div>
+                <div className="space-y-2">
+                  <div className="cs-mini-row">
+                    <RiThermometerLine className="text-medical-blue text-sm" />
+                    <span>Lab report · Updated today</span>
+                  </div>
+                  <div className="cs-mini-row">
+                    <RiCapsuleLine className="text-medical-blue text-sm" />
+                    <span>Prescription · Active</span>
+                  </div>
                 </div>
               </div>
-              <div className="absolute -bottom-4 -left-4 bg-white dark:bg-gray-800 shadow-xl rounded-2xl px-3 py-2 flex items-center gap-2">
-                <div className="w-7 h-7 bg-green-100 rounded-lg flex items-center justify-center">✅</div>
-                <div>
-                  <p className="text-[10px] font-semibold text-app-dark dark:text-white">Booked!</p>
-                  <p className="text-[10px] text-muted">Confirmation sent</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Stats */}
       <section className="py-16 bg-medical-blue dark:bg-blue-900">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -218,11 +207,44 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Features */}
       <section className="py-20 bg-app dark:bg-gray-950">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-14">
+            <span className="text-xs font-bold uppercase tracking-widest text-teal mb-3 block">How it works</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-app-dark dark:text-white mb-4">
+              From symptom to specialist, simplified.
+            </h2>
+            <p className="text-muted max-w-xl mx-auto">
+              Four calm steps stand between you and the right care.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08 }}
+                viewport={{ once: true }}
+                className="cs-step-card"
+              >
+                <span className="cs-step-number">{s.step}</span>
+                <div className="cs-icon-circle mb-4" style={{ background: "var(--color-mint)" }}>
+                  <s.icon className="text-teal" />
+                </div>
+                <h3 className="font-bold text-app-dark dark:text-white mb-2">{s.title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-teal mb-3 block">Why CareSync AI</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-medical-blue mb-3 block">Why CareSync AI</span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-app-dark dark:text-white mb-4">
               Healthcare that thinks with you
             </h2>
@@ -239,20 +261,64 @@ export default function Landing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
                 viewport={{ once: true }}
-                className="card p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+                className="cs-feature-row"
               >
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style={{ backgroundColor: f.bg }}>
-                  <f.icon className="text-xl" style={{ color: f.color }} />
+                <div className="cs-icon-circle flex-shrink-0" style={{ background: "var(--color-mint)" }}>
+                  <f.icon className="text-teal" />
                 </div>
-                <h3 className="font-bold text-app-dark dark:text-white mb-2">{f.title}</h3>
-                <p className="text-sm text-muted leading-relaxed">{f.desc}</p>
+                <div>
+                  <h3 className="font-bold text-app-dark dark:text-white mb-1.5">{f.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{f.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      <section className="py-20 bg-app dark:bg-gray-950">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="cs-family-panel">
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-widest text-purple-ai mb-3 block">Built for families</span>
+                <h2 className="text-3xl font-extrabold text-app-dark dark:text-white mb-4">
+                  One account, every family member's health.
+                </h2>
+                <p className="text-muted leading-relaxed mb-6">
+                  Keep track of parents, children, and yourself under one roof — separate
+                  timelines, shared peace of mind.
+                </p>
+                <Link to="/signup" className="cs-btn-primary inline-flex">
+                  Create a Family Profile
+                  <RiArrowRightLine />
+                </Link>
+              </div>
+              <div className="space-y-3">
+                {familyMembers.map((m, i) => (
+                  <motion.div
+                    key={m.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    className="cs-family-row"
+                  >
+                    <div className="cs-icon-circle" style={{ background: m.color + "14" }}>
+                      <m.icon style={{ color: m.color }} />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-app-dark dark:text-white">{m.name}</p>
+                      <p className="text-xs text-muted">{m.role}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -288,7 +354,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20 gradient-blue-teal">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
